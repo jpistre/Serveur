@@ -177,5 +177,5 @@ Enfin, voilà un bloc qui permet de bloquer plusieurs vecteurs d'attaque :
 </IfModule>
 ```
 
+> Ce bloc est loin d'être une protection parfaite et peut parfois rentrer en conflit avec une application web.
 > [!WARNING]
-> Ce bloc est loin d'être une protection parfaite et peut parfois rentrer en conflit avec une application web

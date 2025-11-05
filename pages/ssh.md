@@ -60,7 +60,6 @@ Tout d’abord côté client (celui qui veut accéder au serveur) :
 - Générer une clé avec l’algorithme ed25519 (rapide et sécurisé) ;
     - Laisser l’emplacement par défaut en appuyant sur `Enter` ;
     - Entrer un mot de passe pour la clé deux fois (ou appuyer sur Enter pour skip).
-
 ```bash
 $ ssh-keygen -t ed25519
 > Enter a file in which to save the key (/home/YOU/.ssh/id_ALGORITHM):

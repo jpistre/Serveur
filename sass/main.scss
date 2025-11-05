@@ -165,7 +165,7 @@ nav {
 
 #content {
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px 40px 20px;
     max-width: 800px;
     text-align: justify;
 
@@ -210,12 +210,10 @@ img {
 }
 
 p {
+    margin-bottom: 5px;
+
     ~ ul {
         margin-top: 0;
-    }
-
-    &:has(+ ul) {
-        margin-bottom: 5px;
     }
 }
 
@@ -269,6 +267,7 @@ blockquote {
 
 table:not(.highlighttable) {
     width: 100%;
+    margin-top: 5px;
     border-collapse: collapse;
 
     tr {
@@ -293,6 +292,7 @@ table:not(.highlighttable) {
 
 .keys,
 code {
+    font-size: 0.85em;
     font-family: Inconsolata, monospace;
 }
 
@@ -371,7 +371,6 @@ tr:nth-child(2n) code {
 }
 
 .highlight {
-    margin: 1rem 0;
     border-radius: 3px;
     background-color: $alt-background-color;
 
@@ -384,10 +383,10 @@ tr:nth-child(2n) code {
     pre {
         overflow: auto;
         padding: 10px;
+        margin: 5px;
     }
 
     .highlighttable pre {
-        margin: 0;
     }
 
     .hll {
