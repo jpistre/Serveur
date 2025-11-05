@@ -1,0 +1,613 @@
+@import "colors";
+
+:root {
+    color-scheme: light dark;
+}
+
+html {
+    font-size: 1.05em;
+    scroll-behavior: smooth;
+    font-family: roboto, sans-serif;
+    background-color: $background-color;
+
+    a {
+        color: $accent-color;
+        &:visited {
+            color: $visited-color;
+        }
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        padding-left: 240px;
+
+        @media (max-width: 700px) {
+            padding-left: 0;
+        }
+    }
+
+    *::-webkit-scrollbar {
+        height: 4px;
+        width: 4px;
+
+        &-track {
+            background-color: $alt-background-color;
+        }
+
+        &-thumb {
+            background-color: #979393;
+            &:active {
+                background-color: #555;
+            }
+        }
+    }
+}
+
+nav {
+    left: 0;
+    height: 100%;
+    width: 240px;
+    position: fixed;
+    background-color: $alt-background-color;
+    box-shadow: $nav-shadow;
+
+    > ul {
+        padding: 0;
+        margin: 20px 0 0 20px;
+        > li {
+            list-style-type: none;
+        }
+    }
+
+    li {
+        margin-top: 5px;
+        list-style: square;
+
+        a.active {
+            cursor: not-allowed;
+        }
+
+        a,
+        a:visited {
+            color: $nav-link-color;
+            text-decoration: none;
+            transition: color 0.1s ease-in-out;
+            &:not(.active):hover {
+                color: $accent-color;
+            }
+        }
+    }
+
+    #header {
+        display: block;
+        padding: 10px 0;
+        font-size: 1.4em;
+        font-weight: bold;
+        text-align: center;
+        background-color: $accent-color;
+
+        a {
+            color: $nav-link-color;
+            text-decoration: none;
+        }
+
+        svg path {
+            fill: light-dark(#000, #fff);
+        }
+
+        label {
+            padding: 2px;
+            transition: background-color 0.1s ease-in-out;
+
+            &,
+            input {
+                display: none;
+            }
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+
+    @media (max-width: 700px) {
+        height: auto;
+        width: 100%;
+
+        #header {
+            height: 25px;
+            display: flex;
+            place-items: center;
+            padding: 10px 10px;
+            justify-content: space-between;
+
+            label {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+
+                svg {
+                    scale: 0.2;
+                    margin-left: -40px;
+                    margin-top: -40px;
+                }
+            }
+        }
+
+        > ul {
+            display: none;
+        }
+        &:has(input:checked) > ul {
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+#loader.active {
+    height: 2px;
+    position: fixed;
+    background-color: $accent-color;
+    animation: loader 0.8s forwards;
+
+    @keyframes loader {
+        0% {
+            width: 0;
+        }
+        99% {
+            width: 100%;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+}
+
+#content {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 800px;
+    text-align: justify;
+
+    > :first-child {
+        margin-top: 0;
+        padding-top: 35px;
+
+        @media (max-width: 700px) {
+            padding-top: 65px;
+        }
+    }
+}
+
+h2.anchor {
+    cursor: pointer;
+    margin-top: 48px;
+
+    &:hover::before {
+        content: "#";
+        color: #aaa;
+        position: absolute;
+        margin-left: -20px;
+        padding-right: 20px;
+    }
+}
+
+ul:has(input) {
+    padding-left: 20px;
+
+    li {
+        list-style-type: none;
+    }
+}
+
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    margin-top: 10px;
+    border-radius: 6px;
+    margin: 10px auto;
+}
+
+p {
+    ~ ul {
+        margin-top: 0;
+    }
+
+    &:has(+ ul) {
+        margin-bottom: 5px;
+    }
+}
+
+blockquote {
+    width: calc(100% - 35px);
+
+    padding: 10px 15px;
+    margin-left: 0;
+    border-left: 5px solid;
+    background-color: $alt-background-color;
+
+    p {
+        margin: 0;
+    }
+
+    p.quote::before {
+        display: block;
+        margin: 0 0 -5px 0;
+        font-size: 1.05em;
+        font-weight: bold;
+        height: 30px;
+    }
+
+    &:has(p.quote-NOTE) {
+        border-color: $note-color;
+
+        p::before {
+            content: "📝 Note ";
+            color: $note-color;
+        }
+    }
+
+    &:has(p.quote-WARNING) {
+        border-color: $warning-color;
+
+        p::before {
+            content: "⚠️ Warning ";
+            color: $warning-color;
+        }
+    }
+
+    &:has(p.quote-TIP) {
+        border-color: $tip-color;
+
+        p::before {
+            content: "💡 Tip ";
+            color: $tip-color;
+        }
+    }
+}
+
+table:not(.highlighttable) {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr {
+        border: 1px solid $table-border-color;
+    }
+
+    tr:nth-child(even) {
+        background: $alt-background-color;
+    }
+
+    td,
+    th {
+        padding: 10px;
+        text-align: left;
+    }
+
+    @media (max-width: 400px) {
+        display: block;
+        overflow-x: scroll;
+    }
+}
+
+.keys,
+code {
+    font-family: Inconsolata, monospace;
+}
+
+kbd,
+code {
+    padding: 2px 3px;
+    border-radius: 3px;
+    background-color: $alt-background-color;
+}
+
+@mixin key-icon($char, $pos: before) {
+    &::#{$pos} {
+        content: $char;
+        padding-right: 0.4em;
+    }
+}
+
+.key-arrow-up {
+    @include key-icon("⬆");
+}
+.key-page-up {
+    @include key-icon("⇞");
+}
+.key-arrow-down {
+    @include key-icon("⬇");
+}
+.key-page-down {
+    @include key-icon("⇟");
+}
+.key-arrow-right {
+    @include key-icon("➡");
+}
+.key-arrow-left {
+    @include key-icon("⬅");
+}
+.key-tab {
+    @include key-icon("⇥");
+}
+.key-space {
+    @include key-icon("␣");
+}
+.key-control {
+    @include key-icon("⌃");
+}
+.key-alt {
+    @include key-icon("⎇");
+}
+.key-delete {
+    @include key-icon("⌦");
+}
+.key-enter {
+    @include key-icon("⏎", after);
+}
+.key-caps-lock {
+    @include key-icon("⇪");
+}
+.key-shift {
+    @include key-icon("⇧");
+}
+.key-escape {
+    @include key-icon("⎋");
+}
+.key-meta {
+    @include key-icon("⌘");
+}
+.key-win {
+    @include key-icon("⊞");
+}
+.key-menu {
+    @include key-icon("≡");
+}
+
+.quote code,
+tr:nth-child(2n) code {
+    background-color: $background-color;
+}
+
+.highlight {
+    margin: 1rem 0;
+    border-radius: 3px;
+    background-color: $alt-background-color;
+
+    code {
+        padding: 0;
+        border-radius: 0;
+        background-color: $alt-background-color;
+    }
+
+    pre {
+        overflow: auto;
+        padding: 10px;
+    }
+
+    .highlighttable pre {
+        margin: 0;
+    }
+
+    .hll {
+        background-color: $highlight-color;
+    }
+    .c {
+        color: $comment-color;
+    } /* Comment */
+    .err {
+        color: $content-color;
+    } /* Error */
+    .g {
+        color: $content-color;
+    } /* Generic */
+    .k {
+        color: $keyword-color;
+    } /* Keyword */
+    .l {
+        color: $content-color;
+    } /* Literal */
+    .n {
+        color: $content-color;
+    } /* Name */
+    .o {
+        color: $content-color;
+    } /* Operator */
+    .x {
+        color: $content-color;
+    } /* Other */
+    .p {
+        color: $content-color;
+    } /* Punctuation */
+    .cm {
+        color: $comment-color;
+    } /* Comment.Multiline */
+    .cp {
+        color: $header-color;
+    } /* Comment.Preproc */
+    .c1 {
+        color: $comment-color;
+    } /* Comment.Single */
+    .cs {
+        color: $comment-color;
+    } /* Comment.Special */
+    .gd {
+        color: #0000c0;
+        font-weight: bold;
+        background-color: #008080;
+    } /* Generic.Deleted */
+    .ge {
+        color: #c000c0;
+        text-decoration: underline;
+    } /* Generic.Emph */
+    .gr {
+        color: #c0c0c0;
+        font-weight: bold;
+        background-color: #c00000;
+    } /* Generic.Error */
+    .gh {
+        color: $header-color;
+    } /* Generic.Heading */
+    .gi {
+        color: $content-color;
+        background-color: #0000c0;
+    } /* Generic.Inserted */
+    span.go {
+        color: #add8e6;
+        font-weight: bold;
+        background-color: #4d4d4d;
+    } /* Generic.Output */
+    .gp {
+        color: $content-color;
+    } /* Generic.Prompt */
+    .gs {
+        color: $content-color;
+    } /* Generic.Strong */
+    .gu {
+        color: $header-color;
+    } /* Generic.Subheading */
+    .gt {
+        color: #c0c0c0;
+        font-weight: bold;
+        background-color: #c00000;
+    } /* Generic.Traceback */
+    .kc {
+        color: $keyword-color;
+    } /* Keyword.Constant */
+    .kd {
+        color: $keyword-color;
+    } /* Keyword.Declaration */
+    .kn {
+        color: $keyword-color;
+    } /* Keyword.Namespace */
+    .kp {
+        color: $keyword-color;
+    } /* Keyword.Pseudo */
+    .kr {
+        color: $keyword-color;
+    } /* Keyword.Reserved */
+    .kt {
+        color: $keyword-type-color;
+    } /* Keyword.Type */
+    .ld {
+        color: $content-color;
+    } /* Literal.Date */
+    .m {
+        color: $string-color;
+    } /* Literal.Number */
+    .s {
+        color: $string-color;
+    } /* Literal.String */
+    .na {
+        color: $name-attr-color;
+    } /* Name.Attribute */
+    .nb {
+        color: $keyword-color;
+    } /* Name.Builtin */
+    .nc {
+        color: $content-color;
+    } /* Name.Class */
+    .no {
+        color: #ffa0a0;
+    } /* Name.Constant */
+    .nd {
+        color: $content-color;
+    } /* Name.Decorator */
+    .ni {
+        color: #b89a6d;
+    } /* Name.Entity */
+    .ne {
+        color: $content-color;
+    } /* Name.Exception */
+    .nf {
+        color: $content-color;
+    } /* Name.Function */
+    .nl {
+        color: $content-color;
+    } /* Name.Label */
+    .nn {
+        color: $content-color;
+    } /* Name.Namespace */
+    .nx {
+        color: $content-color;
+    } /* Name.Other */
+    .py {
+        color: $content-color;
+    } /* Name.Property */
+    .nt {
+        color: $keyword-color;
+    } /* Name.Tag */
+    .nv {
+        color: $variable-color;
+    } /* Name.Variable */
+    .ow {
+        color: $content-color;
+    } /* Operator.Word */
+    .w {
+        color: $content-color;
+    } /* Text.Whitespace */
+    .mf {
+        color: $content-color;
+    } /* Literal.Number.Float */
+    .mh {
+        color: $content-color;
+    } /* Literal.Number.Hex */
+    .mi {
+        color: $content-color;
+    } /* Literal.Number.Integer */
+    .mo {
+        color: $content-color;
+    } /* Literal.Number.Oct */
+    .sb {
+        color: $string-color;
+    } /* Literal.String.Backtick */
+    .sc {
+        color: $string-color;
+    } /* Literal.String.Char */
+    .sd {
+        color: $string-color;
+    } /* Literal.String.Doc */
+    .s2 {
+        color: $string-color;
+    } /* Literal.String.Double */
+    .se {
+        color: $string-color;
+    } /* Literal.String.Escape */
+    .sh {
+        color: $string-color;
+    } /* Literal.String.Heredoc */
+    .si {
+        color: $string-color;
+    } /* Literal.String.Interpol */
+    .sx {
+        color: $string-color;
+    } /* Literal.String.Other */
+    .sr {
+        color: $string-color;
+    } /* Literal.String.Regex */
+    .s1 {
+        color: $string-color;
+    } /* Literal.String.Single */
+    .ss {
+        color: $string-color;
+    } /* Literal.String.Symbol */
+    .bp {
+        color: $content-color;
+    } /* Name.Builtin.Pseudo */
+    .vc {
+        color: $variable-color;
+    } /* Name.Variable.Class */
+    .vg {
+        color: $variable-color;
+    } /* Name.Variable.Global */
+    .vi {
+        color: $variable-color;
+    } /* Name.Variable.Instance */
+    .il {
+        color: $content-color;
+    } /* Literal.Number.Integer.Long */
+    .language-bash & .nb {
+        color: $bash-cmd-color;
+    }
+}
