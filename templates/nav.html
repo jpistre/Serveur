@@ -2,7 +2,9 @@
     {% for uri, page in tree.items() | sort(attribute='1.meta.order') recursive
     -%}
     <li>
-        <a href="/{{ uri }}{% if uri %}/{% endif %}">{{ page.meta.name }}</a>
+        <a href="/{{ base_url }}/{{ uri }}{% if uri %}/{% endif %}"
+            >{{ page.meta.name }}</a
+        >
         {% if page.children -%}
         <ul>
             {{ loop(page.children.items() | sort(attribute='1.meta.order')) }}
