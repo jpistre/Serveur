@@ -10,23 +10,6 @@ html {
     font-family: roboto, sans-serif;
     background-color: $background-color;
 
-    a {
-        color: $accent-color;
-        &:visited {
-            color: $visited-color;
-        }
-    }
-
-    body {
-        margin: 0;
-        padding: 0;
-        padding-left: 240px;
-
-        @media (max-width: 700px) {
-            padding-left: 0;
-        }
-    }
-
     *::-webkit-scrollbar {
         height: 4px;
         width: 4px;
@@ -44,17 +27,35 @@ html {
     }
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    padding-left: 240px;
+
+    @media (max-width: 700px) {
+        padding-left: 0;
+    }
+}
+
+a {
+    color: $accent-color;
+    &:visited {
+        color: $visited-color;
+    }
+}
+
 nav {
     left: 0;
     height: 100%;
     width: 240px;
     position: fixed;
-    background-color: $alt-background-color;
     box-shadow: $nav-shadow;
+    background-color: $alt-background-color;
 
     > ul {
         padding: 0;
         margin: 20px 0 0 20px;
+
         > li {
             list-style-type: none;
         }
@@ -137,6 +138,7 @@ nav {
         > ul {
             display: none;
         }
+
         &:has(input:checked) > ul {
             display: block;
             margin-bottom: 20px;
@@ -229,36 +231,36 @@ blockquote {
         margin: 0;
     }
 
-    p.quote::before {
+    &::before {
         display: block;
         margin: 0 0 -5px 0;
-        font-size: 1.05em;
+        e: 1.05em;
         font-weight: bold;
         height: 30px;
     }
 
-    &:has(p.quote-NOTE) {
+    &.quote-NOTE {
         border-color: $note-color;
 
-        p::before {
+        &::before {
             content: "📝 Note ";
             color: $note-color;
         }
     }
 
-    &:has(p.quote-WARNING) {
+    &.quote-WARNING {
         border-color: $warning-color;
 
-        p::before {
+        &::before {
             content: "⚠️ Warning ";
             color: $warning-color;
         }
     }
 
-    &:has(p.quote-TIP) {
+    &.quote-TIP {
         border-color: $tip-color;
 
-        p::before {
+        &::before {
             content: "💡 Tip ";
             color: $tip-color;
         }
@@ -267,15 +269,18 @@ blockquote {
 
 table:not(.highlighttable) {
     width: 100%;
-    margin-top: 5px;
     border-collapse: collapse;
+
+    th {
+        background-color: $accent-color;
+    }
 
     tr {
         border: 1px solid $table-border-color;
     }
 
     tr:nth-child(even) {
-        background: $alt-background-color;
+        background-color: $alt-background-color;
     }
 
     td,
@@ -290,82 +295,15 @@ table:not(.highlighttable) {
     }
 }
 
-.keys,
-code {
-    font-size: 0.85em;
-    font-family: Inconsolata, monospace;
-}
-
-kbd,
 code {
     padding: 2px 3px;
     border-radius: 3px;
+    font-size: 0.85em;
+    font-family: Inconsolata, monospace;
     background-color: $alt-background-color;
 }
 
-@mixin key-icon($char, $pos: before) {
-    &::#{$pos} {
-        content: $char;
-        padding-right: 0.4em;
-    }
-}
-
-.key-arrow-up {
-    @include key-icon("⬆");
-}
-.key-page-up {
-    @include key-icon("⇞");
-}
-.key-arrow-down {
-    @include key-icon("⬇");
-}
-.key-page-down {
-    @include key-icon("⇟");
-}
-.key-arrow-right {
-    @include key-icon("➡");
-}
-.key-arrow-left {
-    @include key-icon("⬅");
-}
-.key-tab {
-    @include key-icon("⇥");
-}
-.key-space {
-    @include key-icon("␣");
-}
-.key-control {
-    @include key-icon("⌃");
-}
-.key-alt {
-    @include key-icon("⎇");
-}
-.key-delete {
-    @include key-icon("⌦");
-}
-.key-enter {
-    @include key-icon("⏎", after);
-}
-.key-caps-lock {
-    @include key-icon("⇪");
-}
-.key-shift {
-    @include key-icon("⇧");
-}
-.key-escape {
-    @include key-icon("⎋");
-}
-.key-meta {
-    @include key-icon("⌘");
-}
-.key-win {
-    @include key-icon("⊞");
-}
-.key-menu {
-    @include key-icon("≡");
-}
-
-.quote code,
+blockquote code,
 tr:nth-child(2n) code {
     background-color: $background-color;
 }
@@ -383,7 +321,7 @@ tr:nth-child(2n) code {
     pre {
         overflow: auto;
         padding: 10px;
-        margin: 5px;
+        margin: 0;
     }
 
     .highlighttable pre {

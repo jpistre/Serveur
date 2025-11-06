@@ -5,9 +5,9 @@
 Une fois installé, il est important de savoir comment configurer PHP et surtout dans quel ordre PHP charge les fichiers php.ini :
 
 1. Celui du SAPI (Server API)
-    a. `/etc/php/<version>/apache2/php.ini` pour Apache ;
-    b. `/etc/php/<version>/fpm/php.ini` pour PHP FPM ;
-    c. `/etc/php/<version>/cli/php.ini` pour PHP CLI.
+    - `/etc/php/<version>/apache2/php.ini` pour Apache ;
+    - `/etc/php/<version>/fpm/php.ini` pour PHP FPM ;
+    - `/etc/php/<version>/cli/php.ini` pour PHP CLI.
 2. Celui spécifié par la variable `PHPRC` si cette-dernière existe ;
 3. Celui à la racine de chaque serveur web (à configurer, différent selon le SAPI utilisé).
 
@@ -15,11 +15,10 @@ Pour être sûr du chemin, il y a deux vérifications à faire :
 
 - `php --ini | grep php.ini` pour PHP CLI ;
 - Créer un serveur web qui sert le fichier suivant et y accéder via un navigateur.
-```php
-<?php phpinfo(); ?>
-```
+  ```php
+  <?php phpinfo(); ?>
+  ```
 
-<br>
 Les paramètres suivants peuvent être modifiés pour gagner en performances :
 
 | Nom du paramètre           | Description                                                                                                        |
@@ -34,7 +33,6 @@ Les paramètres suivants peuvent être modifiés pour gagner en performances :
 | `max_execution_time`       | Le temps (en secondes) maximum avant d’arrêter l’exécution d’un script.                                            |
 | `enable_post_data_reading` | Populer automatiquement ou non les variables `$POST` et `$INPUT`.                                                  |
 
-<br>
 Pour ce qui est de la sécurité :
 
 | Nom du paramètre                            | Description                                                                                                            |
@@ -47,7 +45,6 @@ Pour ce qui est de la sécurité :
 | `memory_limit`                              | La quantité maximale de mémoire qu’un script peut allouer, évite qu’un script ne prenne 100% de la mémoire disponible. |
 | `mysql.allow_local_infile `                 | Activé par défaut, autorise ou non les directives `LOAD_DATA`.                                                         |
 
-<br>
 Quelques options pour faciliter le debug :
 
 | Nom du paramètre                                | Description                                                         |

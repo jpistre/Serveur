@@ -3,14 +3,12 @@
 [description]: # (Comment installer et configurer PHP OPcache)
 
 De base, PHP charge et analyse chaque fichier PHP demandé. OPCache permet de stocker en mémoire vive le bytecode généré après chaque analyse pour que les requêtes suivantes soient traitées plus rapidement. Pour l’installer :
-
 - `sudo apt install php-opcache` ;
 - Mettre `opcache.enable=1` dans un `php.ini` ;
 - Redémarrer Apache avec `sudo systemctl restart apache2`.
 
-<br>
-Les paramètres suivants peuvent être modifiés pour gagner en performances, ils se placent dans un `php.ini` :
 
+Les paramètres suivants peuvent être modifiés pour gagner en performances, ils se placent dans un `php.ini` :
 | Nom du paramètre                  | Description                                                                                                       |
 | :-------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
 | `opcache.enable_cli`              | Activer la mise en cache pour les scripts en ligne de commande.                                                   |
@@ -25,9 +23,8 @@ Les paramètres suivants peuvent être modifiés pour gagner en performances, il
 | `opcache.validate_timestamps`     | Vérifier à intervalle régulier (revalidate_freq) si les fichiers ont été modifiés ou non.                         |
 | `opcache.revalidate_freq`         | La fréquence (en secondes) à laquelle OPCache vérifie quels fichiers ont été modifiés.                            |
 
-<br>
-Quelques bonnes pratiques/conseils :
 
+Quelques bonnes pratiques/conseils :
 - Activer `jit` en mode `tracing` et ajuster `jit_buffer_size` à 5% de la RAM disponible ;
 - Augmenter `memory_consumption` si le cache est souvent complet ;
 - Augmenter `interned_strings_buffer` à 32MB ou 64MB si l’application effectue beaucoup d'opérations sur les chaînes de caractères ;

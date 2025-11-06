@@ -32,21 +32,21 @@ monhote@192.168.1.10’s password:
 Si besoin, il est aussi possible de lancer des applications graphiques à partir d’une session SSH :
 
 - Côté serveur, ajouter ces lignes à `/etc/ssh/sshd_config` ;
-```
-X11Forwarding yes
-X11DisplayOffset 10
-X11UseLocalhost no
-```
+  ```apacheconf
+  X11Forwarding yes
+  X11DisplayOffset 10
+  X11UseLocalhost no
+  ```
 - Installer `xdg-utils` et redémarrer le serveur OpenSSH :
-```bash
-sudo apt install xdg-utils
-sudo systemctl restart ssh
-```
+  ```bash
+  sudo apt install xdg-utils
+  sudo systemctl restart ssh
+  ```
 - Côté client, démarrer une session SSH avec le flag `-X`.
-```
-$ ssh -Y monhote@192.168.1.10
-$ firefox &
-```
+  ```bash
+  $ ssh -Y monhote@192.168.1.10
+  $ firefox &
+  ```
 
 Pour les environnements compatibles, une fenêtre Firefox devrait apparaître côté client (si l’application est installée sur le serveur).
 
@@ -60,21 +60,21 @@ Tout d’abord côté client (celui qui veut accéder au serveur) :
 - Générer une clé avec l’algorithme ed25519 (rapide et sécurisé) ;
     - Laisser l’emplacement par défaut en appuyant sur `Enter` ;
     - Entrer un mot de passe pour la clé deux fois (ou appuyer sur Enter pour skip).
-```bash
-$ ssh-keygen -t ed25519
-> Enter a file in which to save the key (/home/YOU/.ssh/id_ALGORITHM):
-> Enter passphrase (empty for no passphrase):
-> Enter same passphrase again:
-```
+    ```bash
+    $ ssh-keygen -t ed25519
+    > Enter a file in which to save the key (/home/YOU/.ssh/id_ALGORITHM):
+    > Enter passphrase (empty for no passphrase):
+    > Enter same passphrase again:
+    ```
 - Ajouter cette clé au client SSH pour qu’elle soit automatiquement utilisée ;
-```bash
-$ eval "$(ssh-agent -s)"
-$ ssh-add ~/.ssh/id_ed25519
-```
+  ```bash
+  $ eval "$(ssh-agent -s)"
+  $ ssh-add ~/.ssh/id_ed25519
+  ```
 - Le client garde la clé privée tandis que la clé publique est transférée au serveur avec :
-```bash
-$ ssh-copy-id monhote@192.168.1.10
-```
+  ```bash
+  $ ssh-copy-id monhote@192.168.1.10
+  ```
 
 Avant de désactiver la connexion par mot de passe, s’assurer que votre clé est bien reconnu en vous connectant au serveur (il ne devrait pas y avoir de prompt pour le mot de passe) :
 ```bash
@@ -82,7 +82,7 @@ $ ssh monhote@192.168.1.10
 ```
 
 Si tout est bon, on passe maintenant côté serveur pour n’accepter que la connexion par clé  en ajoutant ces lignes à `/etc/ssh/sshd_config`
-```env
+```apacheconf
 PermitRootLogin no
 StrictModes yes
 PubkeyAuthentication yes
@@ -91,7 +91,7 @@ ChallengeResponseAuthentication no
 ```
 
 Le port par défaut de SSH est 22, fait souvent utilisé par les crawlers qui analysent les ports ouverts d’un serveur pour détecter des vulnérabilités. Pour déjouer les crawlers les plus basiques on change le port dans `/etc/ssh/sshd_config` :
-```env
+```apacheconf
 Port 4267
 ```
 

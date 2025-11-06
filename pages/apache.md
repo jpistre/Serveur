@@ -59,32 +59,32 @@ Ensuite, pour que notre site soit accessible via HTTPS :
 
 - Activer le module SSL avec `sudo a2enmod ssl` ;
 - Créer un certificat SSL avec `certbot` ;
-```bash
-sudo apt install certbot python3-certbot-apache
-sudo certbot --apache
-```
+  ```bash
+  sudo apt install certbot python3-certbot-apache
+  sudo certbot --apache
+  ```
 - Modifier `monsite.conf` en y ajoutant un virtual host pour le port 443 ;
-```apacheconf
-<VirtualHost *:443>
-    ServerName monsite.com
-    DocumentRoot /var/www/monsite
+  ```apacheconf
+  <VirtualHost *:443>
+      ServerName monsite.com
+      DocumentRoot /var/www/monsite
 
-    SSLEngine on
-    SSLCertificateFile /etc/letsencrypt/live/monsite.com/fullchain.pem
-    SSLCertificateKeyFile /etc/letsencrypt/live/monsite.com/privkey.pem
+      SSLEngine on
+      SSLCertificateFile /etc/letsencrypt/live/monsite.com/fullchain.pem
+      SSLCertificateKeyFile /etc/letsencrypt/live/monsite.com/privkey.pem
 
-    <Directory /var/www/monsite>
-        AllowOverride All
-    </Directory>
-</VirtualHost>
-```
+      <Directory /var/www/monsite>
+          AllowOverride All
+      </Directory>
+  </VirtualHost>
+  ```
 - Forcer la redirection d'HTTP vers HTTPS dans le virtual host pour le port 80.
-```apacheconf
-# Au même niveau que ServerName monsite.com dans <VirtualHost *:80>
-RewriteEngine On
-RewriteCond %{HTTPS} !=on
-RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R=301,L]
-```
+  ```apacheconf
+  # Au même niveau que ServerName monsite.com dans <VirtualHost *:80>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R=301,L]
+  ```
 
 ## Quelques mesures de sécurité
 
@@ -117,7 +117,7 @@ Ensuite, pour se protéger en partie contre les failles XSS et le clickjacking :
 ```
 
 Enfin, voilà un bloc qui permet de bloquer plusieurs vecteurs d'attaque :
-```
+```apacheconf
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
@@ -177,5 +177,5 @@ Enfin, voilà un bloc qui permet de bloquer plusieurs vecteurs d'attaque :
 </IfModule>
 ```
 
-> Ce bloc est loin d'être une protection parfaite et peut parfois rentrer en conflit avec une application web.
 > [!WARNING]
+> Ce bloc est loin d'être une protection parfaite et peut parfois rentrer en conflit avec une application web.

@@ -1,9 +1,30 @@
 $accent-color: #03a9f4;
+$accent-color: light-dark(#add8e6, #4b5563);
 $background-color: light-dark(#fff, #1d1e22);
 $alt-background-color: light-dark(#f5f1f1, #333232);
 $table-border-color: light-dark(#ddd, #444);
 
 $font-color: light-dark(#000, #fff);
+$visited-color: light-dark(initial, #87ceeb);
+$nav-link-color: light-dark(#000, #fff);
+$nav-shadow: inset -10px 0 10px -10px
+    light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+
+$note-color: #03a9f4;
+$warning-color: #cd5c5c;
+$tip-color: #90ee90;
+
+$content-color: light-dark(#000, #fff);
+$header-color: light-dark(#f14343, #ff834a);
+$string-color: light-dark(#bb7d51, #eab289);
+$comment-color: light-dark(#817676, #87ceeb);
+$variable-color: light-dark(#06728d, #98fb98);
+$keyword-color: light-dark(#156579, #f0e68c);
+$keyword-type-color: light-dark(#9b9430, #bdb76b);
+$name-attr-color: light-dark(#0c728b, #8cf0e8);
+$bash-cmd-color: light-dark(#0866aa, #99d4ff);
+$highlight-color: light-dark(#ffffcc, #44475a);
+
 $visited-color: light-dark(initial, #87ceeb);
 $nav-link-color: light-dark(#000, #fff);
 $nav-shadow: inset -10px 0 10px -10px
