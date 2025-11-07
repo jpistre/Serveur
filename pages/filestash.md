@@ -18,11 +18,11 @@ Après cela vous pouvez accèder à filestash en saisissant l'URL suivante: http
 ![MDP admin](https://raw.githubusercontent.com/mickael-kerjean/filestash_images/master/screenshots/setup_password.png)
 
 Saisissez votre mot de passe administrateur et vous aurez ensuite accès à la partie administrateur de votre serveur filestash dans laquelle vous pourrez configurer votre serveur comme bon vous semble.
-![AdminPage](/static/adminFilestash.png)
+![AdminPage](/static/images/adminFilestash.png)
 
 Pour avoir de nouveau accès à la partie administrateur à tout moment saisissez l'URL : http://adresseIPserveur:8334/admin
 
 Pour avoir accès à la partie utilisateur saisissez l'URL:http://adresseIPserveur:8334 et vous serez alors sur une page de ce type selon les configurations que vous avez sélectionné dans la partie administrateur:
-![login](/static/loginFilestash.png)
+![login](/static/images/loginFilestash.png)
 
 Ici Hostname est l'adresse IP de votre serveur Linux,username est le login de votre serveur et Password est le mot de passe du serveur.
