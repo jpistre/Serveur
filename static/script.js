@@ -1,7 +1,6 @@
 function currentA() {
-  const href = new URL(window.location.href);
-  const selector = `ul a[href='${href.pathname}'], ul a[href='${href.pathname + "/"}']`;
-  return document.querySelector(selector);
+  let href = new URL(window.location.href).pathname.substring(1);
+  return document.querySelector(`ul a[href='${href}']`);
 }
 
 let a = currentA();
