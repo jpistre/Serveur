@@ -1,147 +1,73 @@
-@import "colors";
-
-:root {
-    color-scheme: light dark;
-}
+@import "vars";
 
 html {
-    font-size: 1.05em;
     scroll-behavior: smooth;
-    font-family: roboto, sans-serif;
+    color-scheme: light dark;
+    font-family: "MSPA Sans", sans;
     background-color: $background-color;
-
-    *::-webkit-scrollbar {
-        height: 4px;
-        width: 4px;
-
-        &-track {
-            background-color: $alt-background-color;
-        }
-
-        &-thumb {
-            background-color: #979393;
-            &:active {
-                background-color: #555;
-            }
-        }
-    }
 }
 
 body {
     margin: 0;
-    padding: 0;
-    padding-left: 240px;
-
-    @media (max-width: 700px) {
-        padding-left: 0;
-    }
-}
-
-a {
-    color: $accent-color;
-    &:visited {
-        color: $visited-color;
-    }
+    padding-left: 200px;
 }
 
 nav {
     left: 0;
-    height: 100%;
-    width: 240px;
+    width: 200px;
+    height: 100vh;
     position: fixed;
     box-shadow: $nav-shadow;
     background-color: $alt-background-color;
+}
 
-    > ul {
-        padding: 0;
-        margin: 20px 0 0 20px;
+#header {
+    padding: 10px 0;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    background-color: $accent-color;
 
-        > li {
-            list-style-type: none;
-        }
+    label {
+        display: none;
+    }
+}
+
+nav > ul {
+    padding-left: 1em;
+
+    ul {
+        padding-left: 1.25em;
     }
 
     li {
-        margin-top: 5px;
-        list-style: square;
+        list-style: none !important;
+    }
 
-        a.active {
+    > li {
+        &:has(> a.active)::before {
+            content: "➜";
+        }
+
+        li::before {
+            content: "•";
+        }
+
+        li:has(> a.active)::before {
+            content: "➜";
+        }
+    }
+
+    a {
+        color: $font-color;
+        text-decoration: none;
+
+        &:not(.active):hover {
+            color: $accent-color;
+        }
+
+        &.active {
             cursor: not-allowed;
-        }
-
-        a,
-        a:visited {
-            color: $nav-link-color;
-            text-decoration: none;
-            transition: color 0.1s ease-in-out;
-            &:not(.active):hover {
-                color: $accent-color;
-            }
-        }
-    }
-
-    #header {
-        display: block;
-        padding: 10px 0;
-        font-size: 1.4em;
-        font-weight: bold;
-        text-align: center;
-        background-color: $accent-color;
-
-        a {
-            color: $nav-link-color;
-            text-decoration: none;
-        }
-
-        svg path {
-            fill: light-dark(#000, #fff);
-        }
-
-        label {
-            padding: 2px;
-            transition: background-color 0.1s ease-in-out;
-
-            &,
-            input {
-                display: none;
-            }
-            &:hover {
-                background-color: rgba(0, 0, 0, 0.1);
-            }
-        }
-    }
-
-    @media (max-width: 700px) {
-        height: auto;
-        width: 100%;
-
-        #header {
-            height: 25px;
-            display: flex;
-            place-items: center;
-            padding: 10px 10px;
-            justify-content: space-between;
-
-            label {
-                display: inline-block;
-                width: 20px;
-                height: 20px;
-
-                svg {
-                    scale: 0.2;
-                    margin-left: -40px;
-                    margin-top: -40px;
-                }
-            }
-        }
-
-        > ul {
-            display: none;
-        }
-
-        &:has(input:checked) > ul {
-            display: block;
-            margin-bottom: 20px;
         }
     }
 }
@@ -166,164 +92,121 @@ nav {
 }
 
 #content {
-    margin: 0 auto;
-    padding: 0 20px 40px 20px;
     max-width: 800px;
     text-align: justify;
+    margin: 0 auto;
+    padding: 20px 20px 40px 20px;
 
-    > :first-child {
-        margin-top: 0;
-        padding-top: 35px;
+    h2.anchor {
+        cursor: pointer;
 
-        @media (max-width: 700px) {
-            padding-top: 65px;
+        &:hover::before {
+            content: "#";
+            color: #aaa;
+            position: absolute;
+            margin-left: -20px;
+            padding-right: 20px;
         }
     }
-}
-
-h2.anchor {
-    cursor: pointer;
-    margin-top: 48px;
-
-    &:hover::before {
-        content: "#";
-        color: #aaa;
-        position: absolute;
-        margin-left: -20px;
-        padding-right: 20px;
-    }
-}
-
-ul:has(input) {
-    padding-left: 20px;
-
-    li {
-        list-style-type: none;
-    }
-}
-
-img {
-    display: block;
-    height: auto;
-    max-width: 100%;
-    margin-top: 10px;
-    border-radius: 6px;
-    margin: 10px auto;
-}
-
-p {
-    margin-bottom: 5px;
-
-    ~ ul {
-        margin-top: 0;
-    }
-}
-
-blockquote {
-    width: calc(100% - 35px);
-
-    padding: 10px 15px;
-    margin-left: 0;
-    border-left: 5px solid;
-    background-color: $alt-background-color;
 
     p {
-        margin: 0;
+        margin-bottom: $inner-margin;
     }
 
-    &::before {
+    img,
+    pre,
+    code,
+    blockquote,
+    table:not(.highlighttable) {
+        border-radius: $border-radius;
+    }
+
+    img {
+        height: auto;
         display: block;
-        margin: 0 0 -5px 0;
-        e: 1.05em;
-        font-weight: bold;
-        height: 30px;
+        max-width: 100%;
+        margin: $inner-margin auto;
     }
 
-    &.quote-NOTE {
-        border-color: $note-color;
-
-        &::before {
-            content: "📝 Note ";
-            color: $note-color;
-        }
+    pre,
+    > ul,
+    > ol {
+        margin-top: 0;
     }
 
-    &.quote-WARNING {
-        border-color: $warning-color;
-
-        &::before {
-            content: "⚠️ Warning ";
-            color: $warning-color;
-        }
+    li pre {
+        margin: $inner-margin 0;
     }
 
-    &.quote-TIP {
-        border-color: $tip-color;
-
-        &::before {
-            content: "💡 Tip ";
-            color: $tip-color;
-        }
-    }
-}
-
-table:not(.highlighttable) {
-    width: 100%;
-    border-collapse: collapse;
-
-    th {
-        background-color: $accent-color;
-    }
-
-    tr {
-        border: 1px solid $table-border-color;
-    }
-
-    tr:nth-child(even) {
-        background-color: $alt-background-color;
-    }
-
-    td,
-    th {
-        padding: 10px;
-        text-align: left;
-    }
-
-    @media (max-width: 400px) {
-        display: block;
-        overflow-x: scroll;
-    }
-}
-
-code {
-    padding: 2px 3px;
-    border-radius: 3px;
-    font-size: 0.85em;
-    font-family: Inconsolata, monospace;
-    background-color: $alt-background-color;
-}
-
-blockquote code,
-tr:nth-child(2n) code {
-    background-color: $background-color;
-}
-
-.highlight {
-    border-radius: 3px;
-    background-color: $alt-background-color;
-
+    pre,
     code {
-        padding: 0;
-        border-radius: 0;
+        font-family: "MSPA Mono";
         background-color: $alt-background-color;
     }
 
     pre {
-        overflow: auto;
-        padding: 10px;
-        margin: 0;
+        padding: 6px;
+        overflow: scroll;
     }
 
+    table:not(.highlighttable) {
+        width: 100%;
+        overflow: hidden;
+        border-spacing: 0;
+        border-collapse: separate;
+        border: 1px solid $table-border-color;
+
+        th {
+            background-color: $accent-color;
+        }
+
+        tr:nth-child(even) {
+            background-color: $alt-background-color;
+        }
+
+        td,
+        th {
+            padding: 10px;
+            text-align: left;
+        }
+    }
+
+    blockquote {
+        width: calc(100% - 35px);
+        margin-left: 0;
+        padding: 10px 15px;
+        border-left: 5px solid;
+        background-color: $alt-background-color;
+
+        p {
+            margin: 0;
+        }
+
+        &::before {
+            display: block;
+            height: 30px;
+            margin: 0 0 -5px 0;
+            font-weight: bold;
+        }
+
+        @mixin quote-variant($name, $props) {
+            &.quote-#{$name} {
+                border-color: map-get($props, color);
+
+                &::before {
+                    content: "#{map-get($props, icon)} #{map-get($props, label)} ";
+                    color: map-get($props, color);
+                }
+            }
+        }
+
+        @each $name, $props in $quote-variants {
+            @include quote-variant($name, $props);
+        }
+    }
+}
+
+.highlight {
     .hll {
         background-color: $highlight-color;
     }

@@ -4,7 +4,7 @@
 
 Apache est un outil très modulaire qui permet de créer des serveurs web :
 ```bash
-sudo apt install apache2
+$ sudo apt install apache2
 ```
 
 Voici quelques modules importants qu'on aura l'occasion de voir en détail :

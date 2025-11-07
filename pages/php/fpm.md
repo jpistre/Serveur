@@ -35,7 +35,6 @@ Les paramètres suivants peuvent être modifiés pour gagner en performances, il
 | `pm`              | La stratégie de gestion des processus (`static`, `dynamic` ou `ondemand`)                                             |
 | `pm.max_requests` | Le nombre de requêtes à traiter avant de redémarrer le processus, permet d’éviter les fuites de mémoire trop grosses. |
 
-<br>
 S’il y a des problèmes liés au traitement des requêtes simultanées, il faut modifier la configuration du gestionnaire de processus. La matrice suivante est un bon point de départ :
 
 | Mémoire système (MB)                    | 4096 | 6144 | 8192 | 16384 | 32768 |

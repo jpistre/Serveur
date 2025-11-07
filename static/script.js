@@ -1,18 +1,9 @@
 function currentA() {
-  let href = window.location.href.endsWith("/")
-    ? window.location.href
-    : `${window.location.href}/`;
-
-  const links = document.querySelectorAll("ul a");
-  const targetLink = Array.from(links).find(
-    (link) => link.href.toLowerCase() === href.toLowerCase(),
-  );
-
-  return targetLink;
+  const href = new URL(window.location.href);
+  const selector = `ul a[href='${href.pathname}'], ul a[href='${href.pathname + "/"}']`;
+  return document.querySelector(selector);
 }
 
-let loader = document.getElementById("loader");
-let input = document.getElementById("show-nav");
 let a = currentA();
 
 function preFetch() {
@@ -21,9 +12,7 @@ function preFetch() {
 
 function updateWithJSON(json) {
   document.title = `Markdown SPA - ${json.name}`;
-
   document.querySelector('meta[name="description"]').content = json.description;
-
   document.querySelector("#content").innerHTML =
     `<h1>${json.name}</h1>${json.page_content}`;
 }
@@ -47,5 +36,7 @@ function postFetch() {
   }
 
   loader.classList.remove("active");
-  input.checked = false;
+  show_nav.checked = false;
 }
+
+postFetch();
