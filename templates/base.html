@@ -6,7 +6,7 @@
         <base href="{{ base_url }}"></base>
         <title>Serveur Linux - {{ meta.name }}</title>
         <meta name="description" content="{{ meta.description }}" />
-        <link rel="stylesheet" href="/{{ assets_path }}/style.css" />
+        <link rel="stylesheet" href="{{ assets_path }}/style.css" />
     </head>
     <body>
         <nav>
@@ -39,8 +39,8 @@
             {{+ page_content -}}
         </div>
 
-        <script src="/{{ assets_path }}/mspa.js"></script>
-        <script src="/{{ assets_path }}/script.js"></script>
+        <script src="{{ assets_path }}/mspa.js"></script>
+        <script src="{{ assets_path }}/script.js"></script>
         <script
             async
             src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"
