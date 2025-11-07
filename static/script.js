@@ -1,9 +1,9 @@
 function currentA() {
-  let href = new URL(window.location.href).pathname.substring(1);
-  return document.querySelector(`ul a[href='${href}']`);
+  let href = window.location.href;
+  return Array.from(document.querySelectorAll("nav ul a")).find(
+    (link) => link.href.toLowerCase() === href.toLowerCase(),
+  );
 }
-
-let a = currentA();
 
 function preFetch() {
   loader.classList.add("active");
@@ -38,4 +38,5 @@ function postFetch() {
   show_nav.checked = false;
 }
 
+let a = currentA();
 postFetch();
