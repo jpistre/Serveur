@@ -103,7 +103,7 @@ Si le serveur est connecté à une box ou à un routeur domestique il reste une 
 Il va être nécessaire de redirigé le port UDP dans la box : -Protocole = UDP
 -Port externe = 51820
 
--Adresse IP locale du serveur = 194.214.171.22
+-Adresse IP locale du serveur = 100.64.183.152
 
 -Port interne = 51820
 
@@ -115,7 +115,7 @@ Désactivez puis réactivez le tunnel côté client
 
 Re-testez depuis le client avec la commande suivante (windows dans le powershell):
 ```bash
-Test-NetConnection -ComputerName 194.214.171.22 -Port 51820 -InformationLevel Detailed
+Test-NetConnection -ComputerName 100.64.183.152 -Port 51820 -InformationLevel Detailed
 ```
 Puis vérifiez sur le serveur:
 ```bash
