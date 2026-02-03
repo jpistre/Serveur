@@ -1,0 +1,14 @@
+{
+  "prod_url": "https://jpistre.github.io/Serveur",
+  "build_path": "generated",
+  "pages_path": "pages",
+  "assets_path": "assets",
+  "templates_path": "templates",
+
+  "defaults": {
+    "name": "",
+    "description": "",
+    "priority": "0.8",
+    "project_name": "MSPA Starter"
+  }
+}

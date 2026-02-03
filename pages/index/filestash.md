@@ -26,11 +26,11 @@ Une fois Filestash démarré, l'interface est accessible à l'URL `http://<ip se
 ![Création du mot de passe admin](https://raw.githubusercontent.com/mickael-kerjean/filestash_images/master/screenshots/setup_password.png)
 
 Une fois le mot de passe admin créé, vous serez redirigé vers l'interface admin, plus précisemment au choix des options de stockage. Ici on se contentera d'activer FTP et SFTP :
-![Accueil interface d'administration](/static/images/adminFilestash.png)
+![Accueil interface d'administration](/assets/images/adminFilestash.png)
 
 Filestash permet de se connecter à n'importe quel serveur qui expose publiquement les protocols configurés dans l'interface admin.
 Ici, on se contente de se connecter à notre propre serveur :
 - `Hostname` est l'IP du serveur auquel se connecter ;
 - `Username` est l'utilisateur auquel se connecter ;
 - `Password` est le mot de passe de cet utilisateur.
-![Page de connexion utilisateur](/static/images/loginFilestash.png)
+![Page de connexion utilisateur](/assets/images/loginFilestash.png)

@@ -1,13 +1,12 @@
 <ul>
-    {% for uri, page in tree.items() | sort(attribute='1.meta.order') recursive
-    -%}
+    {% macro render(pages) %} {% for uri, page in pages %}
     <li>
-        <a href="{{ uri }}{% if uri %}/{% endif %}">{{ page.meta.name }}</a>
-        {% if page.children -%}
+        <a href="{{ base_url }}/{{ uri }}">{{ page.meta.name }}</a>
+        {% if page.children %}
         <ul>
-            {{ loop(page.children.items() | sort(attribute='1.meta.order')) }}
+            {{ self::render(pages=page.children) }}
         </ul>
-        {% endif -%}
+        {% endif %}
     </li>
-    {% endfor -%}
+    {% endfor %} {% endmacro render %} {{ self::render(pages=tree) }}
 </ul>

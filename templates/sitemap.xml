@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {% for uri, page in tree.items() recursive %}
+    {% macro render(pages) %} {% for uri, page in pages %}
     <url>
-        <loc>{{ url }}/{{ uri }}</loc>
-        <lastmod>{{ date }}</lastmod>
+        <loc>{{ base_url }}/{{ uri }}</loc>
         <priority>{{ page.meta.priority }}</priority>
     </url>
 
     {% if page.children %}
-        {{ loop(page.children.items()) }}
+        {{ self::render(pages=page.children) }}
     {% endif %}
-    {% endfor %}
+    {% endfor %} {% endmacro render %}
+
+    {{ self::render(pages=tree) }}
 </urlset>
