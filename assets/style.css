@@ -1,0 +1,414 @@
+/************************************ VARS ************************************/
+:root {
+    color-scheme: light dark;
+
+    --accent-color: light-dark(#add8e6, #4b5563);
+    --background-color: light-dark(#fff, #1d1e22);
+    --alt-background-color: light-dark(#f5f1f1, #333232);
+    --table-border-color: light-dark(#ddd, #444);
+
+    --font-color: light-dark(#000, #fff);
+    --visited-color: light-dark(initial, #87ceeb);
+    --nav-link-color: light-dark(#000, #fff);
+    --nav-shadow: inset -10px 0 10px -10px --
+        light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+
+    --note-color: #03a9f4;
+    --warning-color: #cd5c5c;
+    --tip-color: #90ee90;
+
+    --border-radius: 4px;
+    --inner-margin: 6px;
+}
+
+@font-face {
+    font-style: normal;
+    font-weight: normal;
+    font-family: "MSPA Sans";
+    src: url("AdwaitaSans-Regular.ttf");
+}
+
+@font-face {
+    font-style: normal;
+    font-weight: normal;
+    font-family: "MSPA Mono";
+    src: url("AdwaitaMono-Regular.ttf");
+}
+
+/********************************* BASE STYLE *********************************/
+html {
+    scroll-behavior: smooth;
+    color-scheme: light dark;
+    font-family: "MSPA Sans", sans;
+    background-color: var(--background-color);
+}
+
+body {
+    margin: 0;
+    padding-left: 200px;
+}
+
+/******************************** NAVBAR STYLE ********************************/
+nav {
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    box-shadow: var(--nav-shadow);
+    background-color: var(--alt-background-color);
+}
+
+#header {
+    padding: 10px 0;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--accent-color);
+
+    & label {
+        display: none;
+    }
+}
+
+nav > ul {
+    padding-left: 1em;
+
+    & ul {
+        padding-left: 1.25em;
+    }
+
+    & li {
+        list-style: none !important;
+    }
+
+    & > li {
+        &:has(> a.active)::before {
+            content: "➜";
+        }
+
+        & li::before {
+            content: "•";
+        }
+
+        & li:has(> a.active)::before {
+            content: "➜";
+        }
+    }
+
+    & a {
+        color: var(--font-color);
+        text-decoration: none;
+
+        &:not(.active):hover {
+            color: var(--accent-color);
+        }
+
+        &.active {
+            cursor: not-allowed;
+        }
+    }
+}
+
+/***************************** BASE CONTENT STYLE *****************************/
+#content {
+    max-width: 800px;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 20px 20px 40px 20px;
+}
+
+#content {
+    & h2.anchor {
+        cursor: pointer;
+
+        &:hover::before {
+            content: "#";
+            color: #aaa;
+            position: absolute;
+            margin-left: -20px;
+            padding-right: 20px;
+        }
+    }
+
+    & img {
+        height: auto;
+        display: block;
+        max-width: 100%;
+    }
+
+    & img,
+    & pre,
+    & code,
+    & blockquote,
+    & table:not(.highlighttable) {
+        border-radius: var(--border-radius);
+    }
+}
+
+.footnote-definition p {
+    display: inline-block;
+}
+
+/********************************* MOBILE STYLE *******************************/
+@media (max-width: 600px) {
+    body {
+        padding-left: 0;
+    }
+
+    nav {
+        z-index: 99;
+        width: 100%;
+        overflow: hidden;
+        position: initial;
+        height: fit-content;
+    }
+
+    nav ul {
+        display: none;
+        height: calc(100vh - 20px - 2rem);
+    }
+
+    #header {
+        display: flex;
+        padding: 10px 10px;
+        place-items: center;
+        justify-content: space-between;
+
+        & input {
+            display: none;
+        }
+
+        & label {
+            width: 20px;
+            height: 20px;
+            padding: 2px;
+            display: block;
+            transition: background-color 0.1s ease-in-out;
+
+            svg {
+                scale: 0.2;
+                margin-left: -40px;
+                margin-top: -40px;
+
+                path {
+                    fill: light-dark(#000, #fff);
+                }
+            }
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+
+    &:has(#show_nav:checked) ul {
+        display: block;
+    }
+}
+
+/******************************* ELEMENT SPACING ******************************/
+#content {
+    & p {
+        margin-bottom: var(--inner-margin);
+    }
+
+    & img {
+        margin: var(--inner-margin) auto;
+    }
+
+    & pre,
+    & > ul,
+    & > ol {
+        margin-top: 0;
+    }
+
+    & li pre {
+        margin: var(--inner-margin) 0;
+    }
+
+    blockquote p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/********************************* TABLE STYLE ********************************/
+#content table:not(.highlighttable) {
+    width: 100%;
+    overflow: hidden;
+    border-spacing: 0;
+    border-collapse: separate;
+    border: 1px solid var(--table-border-color);
+
+    & th {
+        background-color: var(--accent-color);
+    }
+
+    & tr:nth-child(even) {
+        background-color: var(--alt-background-color);
+    }
+
+    & td,
+    & th {
+        padding: 10px;
+        text-align: left;
+    }
+}
+
+/****************************** BLOCKQUOTE STYLE ******************************/
+blockquote {
+    width: calc(100% - 35px);
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10px 15px;
+    border-left: 5px solid;
+    background-color: var(--alt-background-color);
+
+    p {
+        margin: 0;
+    }
+
+    &::before {
+        display: block;
+        height: 30px;
+        margin: 0 0 -5px 0;
+        font-weight: bold;
+    }
+
+    &.markdown-alert-note {
+        border-color: var(--note-color);
+
+        &::before {
+            color: var(--note-color);
+            content: "📝 Note";
+        }
+    }
+
+    &.markdown-alert-tip {
+        border-color: var(--tip-color);
+
+        &::before {
+            color: var(--tip-color);
+            content: "💡 Tip";
+        }
+    }
+
+    &.markdown-alert-warning {
+        border-color: var(--warning-color);
+
+        &::before {
+            color: var(--warning-color);
+            content: "⚠️ Warning";
+        }
+    }
+}
+
+/********************************* CODE STYLE *********************************/
+#content {
+    & pre,
+    & code {
+        font-family: "MSPA Mono";
+        background-color: var(--alt-background-color);
+    }
+
+    & pre {
+        padding: 6px;
+        overflow: scroll;
+    }
+}
+
+.hljs {
+    color: light-dark(#24292e, #c9d1d9);
+    background: light-dark(#fff, #0d1117);
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+    color: light-dark(#d73a49, #ff7b72);
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+    color: light-dark(#6f42c1, #d2a8ff);
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-variable {
+    color: light-dark(#005cc5, #79c0ff);
+}
+
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+    color: light-dark(#032f62, #a5d6ff);
+}
+
+.hljs-built_in,
+.hljs-symbol {
+    color: light-dark(#e36209, #ffa657);
+}
+
+.hljs-code,
+.hljs-comment,
+.hljs-formula {
+    color: light-dark(#6a737d, #8b949e);
+}
+
+.hljs-name,
+.hljs-quote,
+.hljs-selector-pseudo,
+.hljs-selector-tag {
+    color: light-dark(#22863a, #7ee787);
+}
+
+.hljs-subst {
+    color: light-dark(#24292e, #c9d1d9);
+}
+
+.hljs-section {
+    color: light-dark(#005cc5, #1f6feb);
+    font-weight: 700;
+}
+
+.hljs-bullet {
+    color: light-dark(#735c0f, #f2cc60);
+}
+
+.hljs-emphasis {
+    color: light-dark(#24292e, #c9d1d9);
+    font-style: italic;
+}
+
+.hljs-strong {
+    color: light-dark(#24292e, #c9d1d9);
+    font-weight: 700;
+}
+
+.hljs-addition {
+    color: light-dark(#22863a, #aff5b4);
+    background-color: light-dark(#f0fff4, #033a16);
+}
+
+.hljs-deletion {
+    color: light-dark(#b31d28, #ffdcd7);
+    background-color: light-dark(#ffeef0, #67060c);
+}
+
+.hljs-doctag,
+.hljs-keyword {
+    font-weight: 600;
+}

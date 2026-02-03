@@ -1,17 +1,38 @@
 <!doctype html>
 <html lang="en">
-    <base>
+    <head>
         <meta charset="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <base href="{{ base_url }}/"></base>
-        <title>Serveur Linux - {{ meta.name }}</title>
+
+        <title>{{ meta.project_name }} - {{ meta.name }}</title>
         <meta name="description" content="{{ meta.description }}" />
-        <link rel="stylesheet" href="{{ assets_path }}/style.css" />
+        <link rel="stylesheet" href="{{ base_url }}/assets/style.css" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css"
+            integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi"
+            crossorigin="anonymous"
+        />
+
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js"
+            integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"
+        ></script>
+
+        <script defer src="{{ base_url }}/assets/mspa.js"></script>
     </head>
     <body>
         <nav>
             <div id="header">
-                <span id="home">Serveur Linux</span>
+                <span id="home">{{ meta.project_name }}</span>
                 <label for="show_nav" id="show_nav_label" tabindex="0">
                     <input type="checkbox" id="show_nav" />
                     <svg
@@ -32,18 +53,21 @@
             {{ nav }}
         </nav>
 
-        <div id="loader"></div>
         <div id="content">
             <h1>{{ meta.name }}</h1>
 
-            {{+ page_content -}}
+            {{ page_content }}
         </div>
 
-        <script src="{{ assets_path }}/mspa.js"></script>
-        <script src="{{ assets_path }}/script.js"></script>
-        <script
-            async
-            src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"
-        ></script>
+        {% if in_livereload %}
+        <script>
+            const ws = new WebSocket("ws://localhost:3030/ws");
+
+            ws.addEventListener("message", (event) => {
+                if (event.data === "reload") location.reload();
+                else console.warn("Ignoring ws message:", event.data);
+            });
+        </script>
+        {% endif %}
     </body>
 </html>
