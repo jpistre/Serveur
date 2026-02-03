@@ -21,6 +21,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout 🔔
+        uses: actions/checkout@v4
       - name: 🧰 Download and run mspa
         run: |
           curl -L -o mspa https://codeberg.org/jpistre/MarkdownSPA/releases/download/0.1/mspa-x86_64-unknown-linux-gnu
