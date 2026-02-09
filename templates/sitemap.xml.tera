@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {% macro render(pages) %} {% for uri, page in pages %}
+    {% macro render(pages) %} {% for page in pages %}
     <url>
-        <loc>{{ base_url }}/{{ uri }}</loc>
+        <loc>{{ base_url }}/{{ page.uri }}</loc>
         <priority>{{ page.meta.priority }}</priority>
     </url>
 

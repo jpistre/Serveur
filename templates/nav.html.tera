@@ -1,0 +1,14 @@
+<ul>
+  {% macro render(pages) %} {% for p in pages | sort_by_meta(key="order") %}
+  <li>
+    <a href="{{ base_url }}/{{ p.uri }}">{{ p.meta.name }}</a>
+    {% if p.children %}
+    <ul>
+      {{ self::render(pages=p.children) }}
+    </ul>
+    {% endif %}
+  </li>
+  {% endfor %} {% endmacro render %}
+
+  {{ self::render(pages=tree) }}
+</ul>
