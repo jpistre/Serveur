@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v4
       - name: 🧰 Download and run mspa
         run: |
-          curl -f https://codeberg.org/jpistre/MarkdownSPA/raw/branch/main/install.sh | sh -s -- binary
+          curl -f https://mspa.jpistre.fr/install.sh | sh -s -- binary
           ./mspa build --prod .
       - name: Setup Pages ⚙️
         uses: actions/configure-pages@v4
