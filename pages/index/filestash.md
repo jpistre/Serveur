@@ -22,11 +22,17 @@ $ curl -O https://downloads.filestash.app/latest/docker-compose.yml
 $ sudo docker-compose up -d
 ```
 
-Une fois Filestash démarré, l'interface est accessible à l'URL `http://<ip server publique>:8334` :
+<br>
+
+L'interface est alors accessible à l'URL `http://<ip server publique>:8334` :
 ![Création du mot de passe admin](https://raw.githubusercontent.com/mickael-kerjean/filestash_images/master/screenshots/setup_password.png)
+
+<br>
 
 Une fois le mot de passe admin créé, vous serez redirigé vers l'interface admin, plus précisemment au choix des options de stockage. Ici on se contentera d'activer FTP et SFTP :
 ![Accueil interface d'administration](/assets/images/adminFilestash.png)
+
+<br>
 
 Filestash permet de se connecter à n'importe quel serveur qui expose publiquement les protocols configurés dans l'interface admin.
 Ici, on se contente de se connecter à notre propre serveur :
@@ -34,3 +40,8 @@ Ici, on se contente de se connecter à notre propre serveur :
 - `Username` est l'utilisateur auquel se connecter ;
 - `Password` est le mot de passe de cet utilisateur.
 ![Page de connexion utilisateur](/assets/images/loginFilestash.png)
+
+<br>
+
+Il est alors possible d'explorer, télécharger et modifier n'importe quel fichier sur l'hôte à distance :
+![Modification d'un fichier](/assets/images/fileFilestash.png)
