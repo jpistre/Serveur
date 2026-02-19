@@ -6,7 +6,8 @@ Ce site rassemble l'ensemble des ressources autour de la mise en place d'un serv
 - Installation d'Ubuntu Server ;
 - Accès à distance avec OpenSSH ou Filestash ;
 - Restriction des connexions par l'intermédiaire d'un VPN ;
-- Des tutoriels et ressources sur le déploiement ou les technologies web ;
+- Mise en place de mailing avec son propre nom de domaine ;
+- Des tutoriels et ressources sur le déploiement ou les technologies web.
 
 > [!NOTE]
 > L'entièreté du code source est disponible sur [Github](https://github.com/jpistre/serveur) et est basée [MarkdownSPA](https://codeberg.org/jpistre/MarkdownSPA) pour être très facilement modifiable.
