@@ -1,4 +1,4 @@
-name: Build and Deploy 🚀
+name: Build and Deploy
 
 on:
   push:
@@ -21,18 +21,24 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🔔
+      - name: Checkout
         uses: actions/checkout@v4
-      - name: 🧰 Download and run mspa
-        run: |
-          wget -qO- http://install.mspa.jpistre.fr | sh -s -- binary
-          ./mspa build --prod .
-      - name: Setup Pages ⚙️
+      - name: Install rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+      - name: Compile mspa
+        run: cargo install -q --git "https://codeberg.org/jpistre/MarkdownSPA.git"
+      - name: Build mspa project
+        run: mspa build --prod .
+      - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: 📤 Upload artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./generated"
-      - name: 🌍 Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
