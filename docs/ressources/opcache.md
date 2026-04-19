@@ -1,7 +1,3 @@
-[order]:       # (3)
-[name]:        # (OPcache)
-[description]: # (Comment installer et configurer PHP OPcache)
-
 De base, PHP charge et analyse chaque fichier PHP demandé. OPCache permet de stocker en mémoire vive le bytecode généré après chaque analyse pour que les requêtes suivantes soient traitées plus rapidement. Pour l’installer :
 - `sudo apt install php-opcache` ;
 - Mettre `opcache.enable=1` dans un `php.ini` ;

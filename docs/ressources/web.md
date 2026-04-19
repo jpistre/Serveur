@@ -1,7 +1,3 @@
-[order]:       # (8)
-[name]:        # (Choix d'un framework web)
-[description]: # (Guide rapide des frameworks à utiliser selon les besoins)
-
 ## Prototypage rapide ou création d'APIs simples
 
 | Framework | Language   | Avantages | Inconveniants |

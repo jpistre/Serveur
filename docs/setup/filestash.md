@@ -1,12 +1,8 @@
-[order]:       # (4)
-[name]:        # (Filestash)
-[description]: # (Mettre en place un client web FTP/SFTP avec Filestash)
-
 Jusque là on a vu comment se connecter à distance à notre serveur via un terminal.
 Dans cette partie, on va voir comment déployer Filestash pour accéder aux fichiers de notre serveur via une interface web.
 
 > [!NOTE]
-> Filestash nécessite que Docker soit installé, la démarche est décrite [ici](/tutoriels/docker/).
+> Filestash nécessite que Docker soit installé, la démarche est décrite [ici](/tutoriels/docker).
 
 <br>
 
@@ -30,7 +26,7 @@ L'interface est alors accessible à l'URL `http://<ip server publique>:8334` :
 <br>
 
 Une fois le mot de passe admin créé, vous serez redirigé vers l'interface admin, plus précisemment au choix des options de stockage. Ici on se contentera d'activer FTP et SFTP :
-![Accueil interface d'administration](/assets/images/adminFilestash.png)
+![Accueil interface d'administration](/adminFilestash.png)
 
 <br>
 
@@ -39,9 +35,9 @@ Ici, on se contente de se connecter à notre propre serveur :
 - `Hostname` est l'IP du serveur auquel se connecter ;
 - `Username` est l'utilisateur auquel se connecter ;
 - `Password` est le mot de passe de cet utilisateur.
-![Page de connexion utilisateur](/assets/images/loginFilestash.png)
+![Page de connexion utilisateur](/loginFilestash.png)
 
 <br>
 
 Il est alors possible d'explorer, télécharger et modifier n'importe quel fichier sur l'hôte à distance :
-![Modification d'un fichier](/assets/images/fileFilestash.png)
+![Modification d'un fichier](/fileFilestash.png)

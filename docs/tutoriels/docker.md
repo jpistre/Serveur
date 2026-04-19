@@ -1,6 +1,9 @@
-[order]:       # (6)
-[name]:        # (Docker)
-[description]: # (Déployer des applications Docker)
+---
+order: 3
+name: Docker
+description: Déployer des applications Docker
+---
+
 
 Docker est outil de virtualisation qui permet de déployer des applications de manière reproductible quelque soit l'OS :
 ```bash
@@ -197,7 +200,7 @@ Pour Gradle (Java), NodeJS et Python, les trois templates suivent la même logiq
 Pour PHP les outils utilisés sont plus variés donc :
 - `dependencies.sh` sert à installer les dépendances supplémentaires avec [`apk`](https://pkgs.alpinelinux.org/packages) ;
 - `build.sh` sert à build l'application php (si besoin) ;
-- `entrypoint.sh` sert à préparer l'application et à démarrer [PHP FPM](./php/fpm.md) ;
+- `entrypoint.sh` sert à préparer l'application et à démarrer [PHP FPM](/ressources/php_fpm) ;
 - `apache.conf` contient toute la configuration apache et la redirection vers PHP FPM.
 
 > [!WARNING]

@@ -1,7 +1,3 @@
-[order]:       # (2)
-[name]:        # (FPM)
-[description]: # (Comment installer et configurer PHP FPM)
-
 FPM (FastCGI Process Manager) est un gestionnaire de processus PHP qui permet de gérer plusieurs requêtes en simultané, particulièrement utile pour les sites devant gérer une forte charge. Pour l’installer :
 - `sudo  apt install php-fpm` ;
 - Activer PHP FPM avec ces deux commandes ;

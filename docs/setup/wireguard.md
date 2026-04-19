@@ -1,7 +1,3 @@
-[order]:       # (3)
-[name]:        # (VPN Wireguard)
-[description]: # (Mettre en place un accès VPN avec WireGuard)
-
 Pour limiter l'accès à notre serveur, il est possible d'y déployer un VPN, le rendant accessible uniquement à ceux autorisés.
 Pour commencer, on installe Wireguard avec `apt` :
 ```bash

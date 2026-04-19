@@ -1,6 +1,8 @@
-[order]:       # (5)
-[name]:        # (PHP)
-[description]: # (Installation, configuration et optimisation d'applications PHP)
+---
+order: 2
+name: PHP
+description: Installation, configuration et optimisation d'applications PHP
+---
 
 PHP lui-même est seulement un langage de programmation adapté au développement web côté serveur. Pour que les utilisateurs aient accès à nos applications il est nécessaire d’installer un serveur web capable de s’interfacer avec PHP.
 

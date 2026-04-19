@@ -1,7 +1,3 @@
-[order]:       # (4)
-[name]:        # (APCu et Redis)
-[description]: # (Comment configurer PHP APCu et Redis)
-
 ## PHP APCu
 
 APCu est un cache type clé-valeur pour PHP, il permet de stocker n’importe quelle variable. C’est un outil très répandu qui peut être facilement mis en place au sein d’un framework :

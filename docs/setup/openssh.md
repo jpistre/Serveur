@@ -1,7 +1,3 @@
-[order]:       # (2)
-[name]:        # (OpenSSH)
-[description]: # (Mettre en place un accès à distance SSH et le configurer)
-
 [SSH](https://fr.wikipedia.org/wiki/Secure_Shell) (Secure SHell) est un protocole qui permet de prendre le contrôle à distance d’une machine.
 Il nous servira ici à accéder à notre serveur sans avoir besoin d'y accéder physiquement et de travailler dessus à plusieurs.
 

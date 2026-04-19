@@ -1,7 +1,3 @@
-[order]:       # (5)
-[name]:        # (Mailing)
-[description]: # (Mettre en place du mailing avec Postfix et Dovecot)
-
 Pour configurer du mailing, on va avoir besoin de deux outils :
 - Postfix, le serveur SMTP auquel les services extérieurs (Gmail, Icloud, ...) font appel pour envoyer leurs mails ;
 - Dovecot, le serveur POP3/IMAP auquel les clients mails (Outlook, Thunderbird, ...) se connectent.
